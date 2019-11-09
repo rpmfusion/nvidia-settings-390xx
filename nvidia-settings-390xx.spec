@@ -1,5 +1,5 @@
 Name:           nvidia-settings-390xx
-Version:        390.129
+Version:        390.132
 Release:        1%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
@@ -125,6 +125,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Sat Nov 09 2019 Leigh Scott <leigh123linux@gmail.com> - 390.132-1
+- Update to 390.132
+
 * Tue Aug 06 2019 Leigh Scott <leigh123linux@gmail.com> - 390.129-1
 - Update to 390.129
 
