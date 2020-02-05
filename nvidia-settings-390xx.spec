@@ -8,6 +8,8 @@ URL:            https://download.nvidia.com/XFree86/nvidia-settings/
 Source0:        %{url}/nvidia-settings-%{version}.tar.bz2
 Source1:        nvidia-settings-user.desktop
 Source2:        nvidia-settings.appdata.xml
+# https://github.com/NVIDIA/nvidia-settings/pull/47
+Patch0:         gcc-10.patch
 
 ExclusiveArch:  i686 x86_64 armv7hl
 
@@ -43,7 +45,7 @@ nvidia-settings is compatible with driver %{version}.
 
 
 %prep
-%autosetup -n nvidia-settings-%{version}
+%autosetup -p1 -n nvidia-settings-%{version}
 # We are building from source
 rm -rf src/libXNVCtrl/libXNVCtrl.a
 
