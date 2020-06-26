@@ -1,6 +1,6 @@
 Name:           nvidia-settings-390xx
-Version:        390.132
-Release:        2%{?dist}
+Version:        390.138
+Release:        1%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
 License:        GPLv2+
@@ -8,8 +8,7 @@ URL:            https://download.nvidia.com/XFree86/nvidia-settings/
 Source0:        %{url}/nvidia-settings-%{version}.tar.bz2
 Source1:        nvidia-settings-user.desktop
 Source2:        nvidia-settings.appdata.xml
-# https://github.com/NVIDIA/nvidia-settings/pull/47
-Patch0:         gcc-10.patch
+Patch0:         https://github.com/NVIDIA/nvidia-settings/commit/a7c1f5fce6303a643fadff7d85d59934bd0cf6b6.patch#/gcc-10.patch
 
 ExclusiveArch:  i686 x86_64 armv7hl
 
@@ -127,6 +126,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Fri Jun 26 2020 Leigh Scott <leigh123linux@gmail.com> - 390.138-1
+- Update to 390.138
+
 * Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 390.132-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
