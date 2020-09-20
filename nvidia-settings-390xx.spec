@@ -1,13 +1,13 @@
 Name:           nvidia-settings-390xx
 Version:        390.138
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
 License:        GPLv2+
 URL:            https://download.nvidia.com/XFree86/nvidia-settings/
 Source0:        %{url}/nvidia-settings-%{version}.tar.bz2
 Source1:        nvidia-settings-user.desktop
-Source2:        nvidia-settings.appdata.xml
+Source2:        nvidia-settings-390xx.appdata.xml
 Patch0:         https://github.com/NVIDIA/nvidia-settings/commit/a7c1f5fce6303a643fadff7d85d59934bd0cf6b6.patch#/gcc-10.patch
 
 ExclusiveArch:  i686 x86_64 armv7hl
@@ -86,8 +86,11 @@ sed -i -e 's|__UTILS_PATH__/||' -e 's|__PIXMAP_PATH__/||' \
   -e 's|__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__|System;Settings;|' \
   %{buildroot}%{_datadir}/applications/nvidia-settings.desktop
 
+# Fix appdata conflict with nvidia main
+mv %{buildroot}%{_datadir}/applications/nvidia-settings.desktop \
+ %{buildroot}%{_datadir}/applications/nvidia-settings-390xx.desktop
 desktop-file-validate \
-  %{buildroot}%{_datadir}/applications/nvidia-settings.desktop
+  %{buildroot}%{_datadir}/applications/nvidia-settings-390xx.desktop
 
 # Pixmap installation
 mkdir -p %{buildroot}%{_datadir}/pixmaps
@@ -118,14 +121,17 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %exclude %{_libdir}/libnvidia-gtk2.so.*
 %endif
 %{_datadir}/pixmaps/nvidia-settings.png
-%{_datadir}/applications/nvidia-settings.desktop
+%{_datadir}/applications/nvidia-settings-390xx.desktop
 %if 0%{?fedora}
-%{_metainfodir}/nvidia-settings.appdata.xml
+%{_metainfodir}/nvidia-settings-390xx.appdata.xml
 %endif
 %{_mandir}/man1/nvidia-settings.1.*
 
 
 %changelog
+* Sun Sep 20 2020 Leigh Scott <leigh123linux@gmail.com> - 390.138-3
+- Fix appdata conflict with nvidia main
+
 * Wed Aug 19 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 390.138-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
