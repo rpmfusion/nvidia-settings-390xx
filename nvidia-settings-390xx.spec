@@ -1,6 +1,6 @@
 Name:           nvidia-settings-390xx
-Version:        390.138
-Release:        4%{?dist}
+Version:        390.141
+Release:        1%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
 License:        GPLv2+
@@ -129,6 +129,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Thu Jan 07 2021 Henrik Nordstrom <henrik@henriknordstrom.net> - 390.141-1
+- Update to 390.141
+
 * Sun Sep 20 2020 Leigh Scott <leigh123linux@gmail.com> - 390.138-4
 - Use 390xx in appdata name
 
