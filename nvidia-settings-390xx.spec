@@ -100,12 +100,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 install -pm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/autostart/nvidia-settings-user.desktop
 desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/nvidia-settings-user.desktop
 
-%if 0%{?fedora}
 # AppData installation
 mkdir -p %{buildroot}%{_metainfodir}
 install -p -m 0644 %{SOURCE2} %{buildroot}%{_metainfodir}
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
-%endif
 
 %ldconfig_scriptlets
 
