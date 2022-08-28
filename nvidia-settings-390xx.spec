@@ -1,6 +1,6 @@
 Name:           nvidia-settings-390xx
-Version:        390.151
-Release:        2%{?dist}
+Version:        390.154
+Release:        1%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
 License:        GPLv2+
@@ -10,7 +10,7 @@ Source1:        nvidia-settings-user.desktop
 Source2:        nvidia-settings-390xx.appdata.xml
 Patch0:         https://github.com/NVIDIA/nvidia-settings/commit/a7c1f5fce6303a643fadff7d85d59934bd0cf6b6.patch#/gcc-10.patch
 
-ExclusiveArch:  i686 x86_64 armv7hl
+ExclusiveArch:  x86_64 armv7hl
 
 Conflicts:      nvidia-settings
 
@@ -19,10 +19,8 @@ BuildRequires:  gcc
 BuildRequires:  hostname
 
 BuildRequires:  gtk2-devel
-%if 0%{?fedora} || 0%{?rhel} > 6
 BuildRequires:  gtk3-devel
 BuildRequires:  libappstream-glib
-%endif
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  libXext-devel
 BuildRequires:  libXrandr-devel
@@ -116,19 +114,18 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %doc doc/*.txt
 %config %{_sysconfdir}/xdg/autostart/nvidia-settings-user.desktop
 %{_bindir}/nvidia-settings
-%{_libdir}/libnvidia-gtk?.so.*
-%if 0%{?fedora} || 0%{?rhel} > 6
+%{_libdir}/libnvidia-gtk3.so.*
 %exclude %{_libdir}/libnvidia-gtk2.so.*
-%endif
 %{_datadir}/pixmaps/nvidia-settings.png
 %{_datadir}/applications/nvidia-settings-390xx.desktop
-%if 0%{?fedora}
 %{_metainfodir}/nvidia-settings-390xx.appdata.xml
-%endif
 %{_mandir}/man1/nvidia-settings.1.*
 
 
 %changelog
+* Sun Aug 28 2022 Leigh Scott <leigh123linux@gmail.com> - 390.154-1
+- Update to 390.154
+
 * Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 390.151-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
