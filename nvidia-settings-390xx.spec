@@ -1,5 +1,5 @@
 Name:           nvidia-settings-390xx
-Version:        390.154
+Version:        390.157
 Release:        1%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
