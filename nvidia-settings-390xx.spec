@@ -1,6 +1,6 @@
 Name:           nvidia-settings-390xx
 Version:        390.157
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Configure the NVIDIA 390xx series graphics driver
 
 License:        GPLv2+
@@ -121,6 +121,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Sun Aug 02 2026 RPM Fusion Release Engineering <leigh123linux@rpmfusion.org> - 390.157-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
 * Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 390.157-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
 
